@@ -10,6 +10,7 @@
 		B616CB2D242FD3E300F0F931 /* NewsFeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B616CB2C242FD3E300F0F931 /* NewsFeedVC.swift */; };
 		B616CB35242FE85400F0F931 /* NewsFeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B616CB33242FE85400F0F931 /* NewsFeedCell.swift */; };
 		B616CB36242FE85400F0F931 /* NewsFeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B616CB34242FE85400F0F931 /* NewsFeedCell.xib */; };
+		B616CB39243005DF00F0F931 /* NewsFeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B616CB38243005DF00F0F931 /* NewsFeedViewModel.swift */; };
 		B63CF49C242E8A3600FCEE69 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63CF49B242E8A3600FCEE69 /* AppDelegate.swift */; };
 		B63CF49E242E8A3600FCEE69 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63CF49D242E8A3600FCEE69 /* SceneDelegate.swift */; };
 		B63CF4A0242E8A3600FCEE69 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63CF49F242E8A3600FCEE69 /* ViewController.swift */; };
@@ -38,6 +39,7 @@
 		B616CB2C242FD3E300F0F931 /* NewsFeedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedVC.swift; sourceTree = "<group>"; };
 		B616CB33242FE85400F0F931 /* NewsFeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedCell.swift; sourceTree = "<group>"; };
 		B616CB34242FE85400F0F931 /* NewsFeedCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsFeedCell.xib; sourceTree = "<group>"; };
+		B616CB38243005DF00F0F931 /* NewsFeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedViewModel.swift; sourceTree = "<group>"; };
 		B63CF498242E8A3600FCEE69 /* frederico-murakawa-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "frederico-murakawa-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B63CF49B242E8A3600FCEE69 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B63CF49D242E8A3600FCEE69 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -91,6 +93,14 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		B616CB37243005D200F0F931 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				B616CB38243005DF00F0F931 /* NewsFeedViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		B63CF48F242E8A3600FCEE69 = {
 			isa = PBXGroup;
 			children = (
@@ -112,6 +122,7 @@
 		B63CF49A242E8A3600FCEE69 /* frederico-murakawa-ios */ = {
 			isa = PBXGroup;
 			children = (
+				B616CB37243005D200F0F931 /* ViewModels */,
 				B616CB32242FE84400F0F931 /* Views */,
 				B616CB2B242FD3C200F0F931 /* ViewControllers */,
 				B6FF592A242EDCF100271314 /* ImageLoading */,
@@ -271,6 +282,7 @@
 				B6FF5927242ECBA200271314 /* Endpoint.swift in Sources */,
 				B6FF5929242ECCA000271314 /* ArticlesProvider.swift in Sources */,
 				B6FF592C242EDD1900271314 /* ImageLoader.swift in Sources */,
+				B616CB39243005DF00F0F931 /* NewsFeedViewModel.swift in Sources */,
 				B616CB2D242FD3E300F0F931 /* NewsFeedVC.swift in Sources */,
 				B63CF49E242E8A3600FCEE69 /* SceneDelegate.swift in Sources */,
 				B616CB35242FE85400F0F931 /* NewsFeedCell.swift in Sources */,
