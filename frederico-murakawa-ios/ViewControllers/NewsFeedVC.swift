@@ -19,6 +19,10 @@ class NewsFeedVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        title = "News"
+        
+        let nib = UINib(nibName: "NewsFeedCell", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: NewsFeedCell.reuseIdentifier)
     }
 
     // MARK: - Table view data source
@@ -28,8 +32,7 @@ class NewsFeedVC: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        cell.textLabel?.text = "\(indexPath.row)"
+        let cell = tableView.dequeueReusableCell(withIdentifier: NewsFeedCell.reuseIdentifier, for: indexPath)
         return cell
     }
 
