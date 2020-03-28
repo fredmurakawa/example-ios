@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B616CB2D242FD3E300F0F931 /* NewsFeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B616CB2C242FD3E300F0F931 /* NewsFeedVC.swift */; };
 		B63CF49C242E8A3600FCEE69 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63CF49B242E8A3600FCEE69 /* AppDelegate.swift */; };
 		B63CF49E242E8A3600FCEE69 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63CF49D242E8A3600FCEE69 /* SceneDelegate.swift */; };
 		B63CF4A0242E8A3600FCEE69 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63CF49F242E8A3600FCEE69 /* ViewController.swift */; };
@@ -32,6 +33,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B616CB2C242FD3E300F0F931 /* NewsFeedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedVC.swift; sourceTree = "<group>"; };
 		B63CF498242E8A3600FCEE69 /* frederico-murakawa-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "frederico-murakawa-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B63CF49B242E8A3600FCEE69 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B63CF49D242E8A3600FCEE69 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -68,6 +70,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B616CB2B242FD3C200F0F931 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				B616CB2C242FD3E300F0F931 /* NewsFeedVC.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
 		B63CF48F242E8A3600FCEE69 = {
 			isa = PBXGroup;
 			children = (
@@ -89,6 +99,7 @@
 		B63CF49A242E8A3600FCEE69 /* frederico-murakawa-ios */ = {
 			isa = PBXGroup;
 			children = (
+				B616CB2B242FD3C200F0F931 /* ViewControllers */,
 				B6FF592A242EDCF100271314 /* ImageLoading */,
 				B6FF5923242EC6F100271314 /* Networking */,
 				B6FF591E242EC37100271314 /* Models */,
@@ -245,6 +256,7 @@
 				B6FF5927242ECBA200271314 /* Endpoint.swift in Sources */,
 				B6FF5929242ECCA000271314 /* ArticlesProvider.swift in Sources */,
 				B6FF592C242EDD1900271314 /* ImageLoader.swift in Sources */,
+				B616CB2D242FD3E300F0F931 /* NewsFeedVC.swift in Sources */,
 				B63CF49E242E8A3600FCEE69 /* SceneDelegate.swift in Sources */,
 				B6FF5930242EE0BA00271314 /* ImageViewLoader.swift in Sources */,
 			);
