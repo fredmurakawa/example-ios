@@ -15,6 +15,8 @@
 		B63CF4B3242E8A3600FCEE69 /* frederico_murakawa_iosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63CF4B2242E8A3600FCEE69 /* frederico_murakawa_iosTests.swift */; };
 		B6FF5920242EC42E00271314 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6FF591F242EC42E00271314 /* Article.swift */; };
 		B6FF5925242EC72300271314 /* APISession.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6FF5924242EC72300271314 /* APISession.swift */; };
+		B6FF5927242ECBA200271314 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6FF5926242ECBA200271314 /* Endpoint.swift */; };
+		B6FF5929242ECCA000271314 /* ArticlesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6FF5928242ECCA000271314 /* ArticlesProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +42,8 @@
 		B63CF4B4242E8A3600FCEE69 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B6FF591F242EC42E00271314 /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		B6FF5924242EC72300271314 /* APISession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISession.swift; sourceTree = "<group>"; };
+		B6FF5926242ECBA200271314 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		B6FF5928242ECCA000271314 /* ArticlesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +118,8 @@
 			isa = PBXGroup;
 			children = (
 				B6FF5924242EC72300271314 /* APISession.swift */,
+				B6FF5926242ECBA200271314 /* Endpoint.swift */,
+				B6FF5928242ECCA000271314 /* ArticlesProvider.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -222,6 +228,8 @@
 				B6FF5920242EC42E00271314 /* Article.swift in Sources */,
 				B63CF4A0242E8A3600FCEE69 /* ViewController.swift in Sources */,
 				B63CF49C242E8A3600FCEE69 /* AppDelegate.swift in Sources */,
+				B6FF5927242ECBA200271314 /* Endpoint.swift in Sources */,
+				B6FF5929242ECCA000271314 /* ArticlesProvider.swift in Sources */,
 				B63CF49E242E8A3600FCEE69 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
