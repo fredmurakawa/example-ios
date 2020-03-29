@@ -29,7 +29,7 @@
                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KZR-tO-QNS">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KZR-tO-QNS">
                         <rect key="frame" x="83" y="10" width="0.0" height="0.0"/>
                         <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
                         <color key="textColor" red="0.5490196078431373" green="0.5490196078431373" blue="0.5490196078431373" alpha="1" colorSpace="calibratedRGB"/>
@@ -67,10 +67,9 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="articleImageView" destination="s9a-SM-uDD" id="FSy-R5-azj"/>
+                <outlet property="articleImageView" destination="s9a-SM-uDD" id="ypx-ob-Y1N"/>
                 <outlet property="authorsLabel" destination="KZR-tO-QNS" id="Wnl-JA-jZe"/>
                 <outlet property="dateLabel" destination="7qM-7i-0IV" id="iGG-HZ-0na"/>
-                <outlet property="imageView" destination="s9a-SM-uDD" id="0PW-tE-dDQ"/>
                 <outlet property="titleLabel" destination="rpm-Cf-kwa" id="iL3-Ae-MIs"/>
             </connections>
             <point key="canvasLocation" x="56.521739130434788" y="138.95089285714286"/>
