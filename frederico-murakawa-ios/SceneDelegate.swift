@@ -19,7 +19,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let splitVC = UISplitViewController()
         splitVC.preferredPrimaryColumnWidthFraction = 1/3
         let detailVC = ViewController()
-        let newsFeedVC = NewsFeedVC()
+        let articlesProvider = ArticlesProvider(apiSession: APISession())
+        let viewModel = NewsFeedViewModel(articlesProvider: articlesProvider)
+        let newsFeedVC = NewsFeedVC(viewModel: viewModel)
         newsFeedVC.delegate = detailVC
         let masterNavigationController = UINavigationController(rootViewController: newsFeedVC)
         let detailNavigationController = UINavigationController(rootViewController: detailVC)
