@@ -117,11 +117,14 @@ final class NewsFeedVC: UITableViewController {
     // MARK: - Table view delegate
 
     override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        guard let cell = tableView.cellForRow(at: indexPath) as? NewsFeedCell else {
+            preconditionFailure("Incorrect cell for table view")
+        }
         let cellViewModel = self.viewModel.cellViewModelForArticle(at: indexPath.row)
-        let action = UIContextualAction(style: .normal, title: nil) { [weak self] (action, view, completionHandler) in
+        let action = UIContextualAction(style: .normal, title: nil) { (action, view, completionHandler) in
             cellViewModel.markArticleAsReadOrUnread()
             completionHandler(true)
-            self?.tableView.reloadRows(at: [indexPath], with: .automatic)
+            cell.configureTitleLabel(with: cellViewModel)
         }
         action.image = UIImage(systemName: cellViewModel.actionImage)
         action.backgroundColor = .blue

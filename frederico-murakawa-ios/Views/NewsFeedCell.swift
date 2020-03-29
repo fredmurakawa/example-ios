@@ -34,13 +34,7 @@ final class NewsFeedCell: UITableViewCell {
 
     func configure(with viewModel: NewsFeedCellViewModel) {
         titleLabel?.text = viewModel.title
-        if viewModel.read {
-            titleLabel.font = UIFont.titleFontRead()
-            titleLabel.textColor = UIColor.lightGray()
-        } else {
-            titleLabel.font = UIFont.titleFontNotRead()
-            titleLabel.textColor = .black
-        }
+        configureTitleLabel(with: viewModel)
         authorsLabel?.text = viewModel.authors
         dateLabel?.text = viewModel.date
         if let url = URL(string: viewModel.imageURL) {
@@ -48,6 +42,16 @@ final class NewsFeedCell: UITableViewCell {
         } else {
             let image = UIImage(systemName: "photo.on.rectangle")?.withTintColor(.black, renderingMode: .alwaysOriginal)
             articleImageView?.image = image // Placeholder image
+        }
+    }
+
+    func configureTitleLabel(with viewModel: NewsFeedCellViewModel) {
+        if viewModel.read {
+            titleLabel.font = UIFont.titleFontRead()
+            titleLabel.textColor = UIColor.lightGray()
+        } else {
+            titleLabel.font = UIFont.titleFontNotRead()
+            titleLabel.textColor = .black
         }
     }
 }
