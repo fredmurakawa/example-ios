@@ -30,6 +30,7 @@ class NewsFeedVC: UITableViewController {
         super.viewDidLoad()
 
         title = "News"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Sort", style: .plain, target: self, action: #selector(sortArticles))
         
         tableView.tableFooterView = UIView()
         let nib = UINib(nibName: "NewsFeedCell", bundle: nil)
@@ -42,6 +43,27 @@ class NewsFeedVC: UITableViewController {
         }
 
         viewModel.loadArticles()
+    }
+
+    @objc func sortArticles() {
+        let alertController = UIAlertController(title: "Sort by", message: nil, preferredStyle: .actionSheet)
+        let titleAction = UIAlertAction(title: "Title", style: .default) { _ in
+            self.viewModel.sortArticles(by: .title)
+        }
+        let authorAction = UIAlertAction(title: "Author", style: .default) { _ in
+            self.viewModel.sortArticles(by: .author)
+        }
+        let dateAction = UIAlertAction(title: "Date", style: .default) { _ in
+            self.viewModel.sortArticles(by: .date)
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+
+        alertController.addAction(titleAction)
+        alertController.addAction(authorAction)
+        alertController.addAction(dateAction)
+        alertController.addAction(cancelAction)
+        
+        present(alertController, animated: true, completion: nil)
     }
 
     // MARK: - Table view data source

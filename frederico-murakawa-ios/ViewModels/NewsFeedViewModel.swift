@@ -8,6 +8,10 @@
 
 import Foundation
 
+enum SortType {
+    case title, date, author
+}
+
 public class NewsFeedViewModel {
     private let articlesProvider: ArticlesProviding
     private var articles: [Article] = []
@@ -24,6 +28,7 @@ public class NewsFeedViewModel {
         articlesProvider.getArticles { [weak self] result in
             do {
                 self?.articles = try result.get()
+                self?.sortArticles(by: .date)
                 self?.onArticlesLoaded()
             } catch {
                 #warning("Implement")
@@ -34,5 +39,23 @@ public class NewsFeedViewModel {
     func cellViewModelForArticle(at index: Int) -> NewsFeedCellViewModel {
         let article = articles[index]
         return NewsFeedCellViewModel(article: article)
+    }
+
+    func sortArticles(by sortType: SortType) {
+        switch sortType {
+        case .title:
+            articles = articles.sorted { $0.title < $1.title }
+        case .author:
+            articles = articles.sorted { $0.authors < $1.authors }
+        case .date:
+            articles = articles.sorted {
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "MM/dd/yyyy"
+                guard let date1 = dateFormatter.date(from: $0.date),
+                        let date2 = dateFormatter.date(from: $1.date) else { return false }
+                return date1 > date2
+            }
+        }
+        onArticlesLoaded()
     }
 }
