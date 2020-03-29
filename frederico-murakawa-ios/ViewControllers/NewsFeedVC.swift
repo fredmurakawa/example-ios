@@ -54,6 +54,9 @@ class NewsFeedVC: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: NewsFeedCell.reuseIdentifier, for: indexPath) as? NewsFeedCell else {
             preconditionFailure("Incorrect cell setup for table view")
         }
+
+        let cellViewModel = viewModel.cellViewModelForArticle(at: indexPath.row)
+        cell.configure(with: cellViewModel)
         return cell
     }
 
