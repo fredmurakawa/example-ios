@@ -63,7 +63,10 @@ class NewsFeedVC: UITableViewController {
     // MARK: - Table view delegate
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        delegate?.didSelectArticle(Article(title: "a", website: "b", authors: "c", date: "d", content: "e", tags: [], imageURL: "f"))
+        let cellViewModel = viewModel.cellViewModelForArticle(at: indexPath.row)
+        cellViewModel.markArticleAsReadOrUnread()
+        tableView.reloadRows(at: [indexPath], with: .automatic)
+        
         if let detailViewController = delegate as? ViewController, let detailNavigationController = detailViewController.navigationController {
           splitViewController?.showDetailViewController(detailNavigationController, sender: nil)
         }

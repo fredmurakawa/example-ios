@@ -13,13 +13,17 @@ public class NewsFeedCellViewModel {
 
     var onArticlesLoaded: () -> Void = {}
 
-    init(article: Article) {
-        self.article = article
-    }
-
     var title: String { article.title }
     var authors: String { article.authors }
     var date: String { article.date }
     var imageURL: String { article.imageURL }
     var read: Bool { article.read }
+
+    init(article: Article) {
+        self.article = article
+    }
+
+    func markArticleAsReadOrUnread() {
+        article.read = !article.read
+    }
 }

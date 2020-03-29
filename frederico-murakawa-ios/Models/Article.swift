@@ -9,7 +9,7 @@
 import Foundation
 
 // MARK: - Article
-struct Article: Decodable {
+class Article: Decodable {
     let title: String
     let website: String
     let authors: String
