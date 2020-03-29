@@ -10,7 +10,6 @@ import UIKit
 
 final class ImageViewLoader {
     static let loader = ImageViewLoader()
-
     private let imageLoader = ImageLoader()
     private var uuidMap = [UIImageView: UUID]() // Tie Image View with UUID to cancel loading tasks later if needed
 
@@ -27,7 +26,10 @@ final class ImageViewLoader {
                 }
             } catch {
                 print("Failed to fetch image at: \(url.absoluteString)", error)
-                #warning("Add a placeholder image?")
+                DispatchQueue.main.async {
+                    let image = UIImage(systemName: "photo.on.rectangle")?.withTintColor(.black, renderingMode: .alwaysOriginal)
+                    imageView.image = image // Placeholder
+                }
             }
         }
 
