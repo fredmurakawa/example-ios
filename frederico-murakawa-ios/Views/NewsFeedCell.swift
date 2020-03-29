@@ -27,6 +27,9 @@ class NewsFeedCell: UITableViewCell {
 
         articleImageView?.cancelImageLoad()
         articleImageView?.image = nil
+        titleLabel.text = nil
+        authorsLabel.text = nil
+        dateLabel.text = nil
     }
 
     func configure(with viewModel: NewsFeedCellViewModel) {
