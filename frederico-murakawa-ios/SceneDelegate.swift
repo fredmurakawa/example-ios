@@ -15,15 +15,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
 
-        window = UIWindow(windowScene: windowScene)
-        let splitVC = UISplitViewController()
-        let detailVC = ViewController()
         let articlesProvider = ArticlesProvider(apiSession: APISession())
         let viewModel = NewsFeedViewModel(articlesProvider: articlesProvider)
         let newsFeedVC = NewsFeedVC(viewModel: viewModel)
-        newsFeedVC.delegate = detailVC
         let masterNavigationController = UINavigationController(rootViewController: newsFeedVC)
+
+        let splitVC = UISplitViewController()
         splitVC.viewControllers = [masterNavigationController]
+
+        window = UIWindow(windowScene: windowScene)
         window?.rootViewController = splitVC
         window?.makeKeyAndVisible()
     }

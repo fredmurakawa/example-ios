@@ -88,9 +88,5 @@ class NewsFeedVC: UITableViewController {
         let cellViewModel = viewModel.cellViewModelForArticle(at: indexPath.row)
         cellViewModel.markArticleAsReadOrUnread()
         tableView.reloadRows(at: [indexPath], with: .automatic)
-        
-        if let detailViewController = delegate as? ViewController, let detailNavigationController = detailViewController.navigationController {
-          splitViewController?.showDetailViewController(detailNavigationController, sender: nil)
-        }
     }
 }
