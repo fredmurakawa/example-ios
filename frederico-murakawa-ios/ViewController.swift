@@ -21,17 +21,6 @@ class ViewController: UIViewController {
         view.addSubview(imageView)
 
         imageView.loadImage(at: URL(string: "http://res.cloudinary.com/cheesecakelabs/image/upload/v1488993901/challenge/news_02_ulyqvw.jpg")!)
-
-        let articleProvider = ArticlesProvider(apiSession: APISession())
-        articleProvider.getArticles { (result) in
-
-            do {
-                let articles = try result.get()
-                print(articles)
-            } catch {
-                print(error)
-            }
-        }
     }
 }
 

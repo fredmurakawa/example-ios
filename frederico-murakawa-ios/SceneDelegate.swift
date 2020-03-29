@@ -17,15 +17,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         window = UIWindow(windowScene: windowScene)
         let splitVC = UISplitViewController()
-        splitVC.preferredPrimaryColumnWidthFraction = 1/3
         let detailVC = ViewController()
         let articlesProvider = ArticlesProvider(apiSession: APISession())
         let viewModel = NewsFeedViewModel(articlesProvider: articlesProvider)
         let newsFeedVC = NewsFeedVC(viewModel: viewModel)
         newsFeedVC.delegate = detailVC
         let masterNavigationController = UINavigationController(rootViewController: newsFeedVC)
-        let detailNavigationController = UINavigationController(rootViewController: detailVC)
-        splitVC.viewControllers = [masterNavigationController, detailNavigationController]
+        splitVC.viewControllers = [masterNavigationController]
         window?.rootViewController = splitVC
         window?.makeKeyAndVisible()
     }

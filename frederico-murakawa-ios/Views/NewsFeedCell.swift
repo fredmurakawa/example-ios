@@ -45,6 +45,9 @@ class NewsFeedCell: UITableViewCell {
         dateLabel?.text = viewModel.date
         if let url = URL(string: viewModel.imageURL) {
             articleImageView?.loadImage(at: url)
+        } else {
+            let image = UIImage(systemName: "photo.on.rectangle")?.withTintColor(.black, renderingMode: .alwaysOriginal)
+            articleImageView?.image = image // Placeholder image
         }
     }
 }
