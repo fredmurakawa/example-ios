@@ -138,6 +138,7 @@
 		B63CF49A242E8A3600FCEE69 /* frederico-murakawa-ios */ = {
 			isa = PBXGroup;
 			children = (
+				B6ADE4762431524500A0836D /* Cache */,
 				B616CB3C24302E8400F0F931 /* Extensions */,
 				B616CB37243005D200F0F931 /* ViewModels */,
 				B616CB32242FE84400F0F931 /* Views */,
@@ -150,7 +151,6 @@
 				B63CF4A4242E8A3600FCEE69 /* Assets.xcassets */,
 				B63CF4A6242E8A3600FCEE69 /* LaunchScreen.storyboard */,
 				B63CF4A9242E8A3600FCEE69 /* Info.plist */,
-				B6ADE47424313A9A00A0836D /* Cache.swift */,
 			);
 			path = "frederico-murakawa-ios";
 			sourceTree = "<group>";
@@ -162,6 +162,14 @@
 				B63CF4B4242E8A3600FCEE69 /* Info.plist */,
 			);
 			path = "frederico-murakawa-iosTests";
+			sourceTree = "<group>";
+		};
+		B6ADE4762431524500A0836D /* Cache */ = {
+			isa = PBXGroup;
+			children = (
+				B6ADE47424313A9A00A0836D /* Cache.swift */,
+			);
+			path = Cache;
 			sourceTree = "<group>";
 		};
 		B6FF591E242EC37100271314 /* Models */ = {

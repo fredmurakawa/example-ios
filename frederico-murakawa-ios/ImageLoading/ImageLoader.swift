@@ -9,13 +9,12 @@
 import UIKit
 
 final class ImageLoader {
-    private var loadedImages = [URL: UIImage]() // In-memory cache
+    private let cache = Cache<URL, UIImage>()
     private var runningRequests = [UUID: URLSessionDataTask]() // Keep a reference to data task to cancel it later if needed
-    private var dispatchQueue = DispatchQueue(label: "com.fred.ImageLoader")
 
     func loadImage(_ url: URL, _ completion: @escaping (Result<UIImage, Error>) -> Void) -> UUID? {
 
-        if let image = loadedImageFor(url) {
+        if let image = cache[url] {
             completion(.success(image))
             return nil
         }
@@ -26,7 +25,7 @@ final class ImageLoader {
             defer { self.runningRequests.removeValue(forKey: uuid) }
 
             if let data = data, let image = UIImage(data: data) {
-                self.setLoadedImage(image, for: url)
+                self.cache[url] = image
                 completion(.success(image))
                 return
             }
@@ -47,29 +46,13 @@ final class ImageLoader {
         }
         task.resume()
 
-        dispatchQueue.sync {
-            runningRequests[uuid] = task
-        }
+        runningRequests[uuid] = task
 
         return uuid
     }
 
     func cancelLoad(_ uuid: UUID) {
-        dispatchQueue.sync {
-            runningRequests[uuid]?.cancel()
-            runningRequests.removeValue(forKey: uuid)
-        }
-    }
-
-    private func loadedImageFor(_ url: URL) -> UIImage? {
-        return dispatchQueue.sync {
-            return self.loadedImages[url]
-        }
-    }
-
-    private func setLoadedImage(_ image: UIImage, for url: URL) {
-        dispatchQueue.sync {
-            self.loadedImages[url] = image
-        }
+        runningRequests[uuid]?.cancel()
+        runningRequests.removeValue(forKey: uuid)
     }
 }
