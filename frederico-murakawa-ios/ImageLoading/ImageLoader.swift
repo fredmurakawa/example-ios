@@ -31,8 +31,10 @@ final class ImageLoader {
             }
 
             guard let error = error else {
-                // without an image or an error, we'll just ignore this for now
-                #warning("Implement this case")
+                // without an image or an error
+                if let image = UIImage.placeholderImage() {
+                    completion(.success(image))
+                }
                 return
             }
 

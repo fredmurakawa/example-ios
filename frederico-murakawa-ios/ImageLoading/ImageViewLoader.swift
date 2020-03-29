@@ -27,8 +27,7 @@ final class ImageViewLoader {
             } catch {
                 print("Failed to fetch image at: \(url.absoluteString)", error)
                 DispatchQueue.main.async {
-                    let image = UIImage(systemName: "photo.on.rectangle")?.withTintColor(.black, renderingMode: .alwaysOriginal)
-                    imageView.image = image // Placeholder
+                    imageView.image = UIImage.placeholderImage()
                 }
             }
         }
