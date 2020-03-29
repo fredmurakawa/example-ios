@@ -34,6 +34,13 @@ class NewsFeedCell: UITableViewCell {
 
     func configure(with viewModel: NewsFeedCellViewModel) {
         titleLabel?.text = viewModel.title
+        if viewModel.read {
+            titleLabel.font = UIFont.titleFontNotRead()
+            titleLabel.textColor = UIColor.lightGray()
+        } else {
+            titleLabel.font = UIFont.titleFontRead()
+            titleLabel.textColor = .black
+        }
         authorsLabel?.text = viewModel.authors
         dateLabel?.text = viewModel.date
         if let url = URL(string: viewModel.imageURL) {

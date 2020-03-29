@@ -12,6 +12,8 @@
 		B616CB36242FE85400F0F931 /* NewsFeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B616CB34242FE85400F0F931 /* NewsFeedCell.xib */; };
 		B616CB39243005DF00F0F931 /* NewsFeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B616CB38243005DF00F0F931 /* NewsFeedViewModel.swift */; };
 		B616CB3B24301CD800F0F931 /* NewsFeedCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B616CB3A24301CD800F0F931 /* NewsFeedCellViewModel.swift */; };
+		B616CB3E24302ED100F0F931 /* UIFont+frederico-murakawa-ios.swift in Sources */ = {isa = PBXBuildFile; fileRef = B616CB3D24302ED100F0F931 /* UIFont+frederico-murakawa-ios.swift */; };
+		B616CB4024302F9200F0F931 /* UIColor+frederico-murakawa-ios.swift in Sources */ = {isa = PBXBuildFile; fileRef = B616CB3F24302F9200F0F931 /* UIColor+frederico-murakawa-ios.swift */; };
 		B63CF49C242E8A3600FCEE69 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63CF49B242E8A3600FCEE69 /* AppDelegate.swift */; };
 		B63CF49E242E8A3600FCEE69 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63CF49D242E8A3600FCEE69 /* SceneDelegate.swift */; };
 		B63CF4A0242E8A3600FCEE69 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63CF49F242E8A3600FCEE69 /* ViewController.swift */; };
@@ -42,6 +44,8 @@
 		B616CB34242FE85400F0F931 /* NewsFeedCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsFeedCell.xib; sourceTree = "<group>"; };
 		B616CB38243005DF00F0F931 /* NewsFeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedViewModel.swift; sourceTree = "<group>"; };
 		B616CB3A24301CD800F0F931 /* NewsFeedCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedCellViewModel.swift; sourceTree = "<group>"; };
+		B616CB3D24302ED100F0F931 /* UIFont+frederico-murakawa-ios.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+frederico-murakawa-ios.swift"; sourceTree = "<group>"; };
+		B616CB3F24302F9200F0F931 /* UIColor+frederico-murakawa-ios.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+frederico-murakawa-ios.swift"; sourceTree = "<group>"; };
 		B63CF498242E8A3600FCEE69 /* frederico-murakawa-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "frederico-murakawa-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B63CF49B242E8A3600FCEE69 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B63CF49D242E8A3600FCEE69 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -104,6 +108,15 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
+		B616CB3C24302E8400F0F931 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B616CB3D24302ED100F0F931 /* UIFont+frederico-murakawa-ios.swift */,
+				B616CB3F24302F9200F0F931 /* UIColor+frederico-murakawa-ios.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		B63CF48F242E8A3600FCEE69 = {
 			isa = PBXGroup;
 			children = (
@@ -125,6 +138,7 @@
 		B63CF49A242E8A3600FCEE69 /* frederico-murakawa-ios */ = {
 			isa = PBXGroup;
 			children = (
+				B616CB3C24302E8400F0F931 /* Extensions */,
 				B616CB37243005D200F0F931 /* ViewModels */,
 				B616CB32242FE84400F0F931 /* Views */,
 				B616CB2B242FD3C200F0F931 /* ViewControllers */,
@@ -278,9 +292,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B616CB4024302F9200F0F931 /* UIColor+frederico-murakawa-ios.swift in Sources */,
 				B6FF5925242EC72300271314 /* APISession.swift in Sources */,
 				B6FF5920242EC42E00271314 /* Article.swift in Sources */,
 				B63CF4A0242E8A3600FCEE69 /* ViewController.swift in Sources */,
+				B616CB3E24302ED100F0F931 /* UIFont+frederico-murakawa-ios.swift in Sources */,
 				B63CF49C242E8A3600FCEE69 /* AppDelegate.swift in Sources */,
 				B6FF5927242ECBA200271314 /* Endpoint.swift in Sources */,
 				B6FF5929242ECCA000271314 /* ArticlesProvider.swift in Sources */,
