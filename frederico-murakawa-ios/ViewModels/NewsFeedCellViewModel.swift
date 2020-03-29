@@ -21,4 +21,5 @@ public class NewsFeedCellViewModel {
     var authors: String { article.authors }
     var date: String { article.date }
     var imageURL: String { article.imageURL }
+    var read: Bool { article.read }
 }

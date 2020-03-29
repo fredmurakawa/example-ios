@@ -17,6 +17,7 @@ struct Article: Decodable {
     let content: String
     let tags: [Tag]
     let imageURL: String
+    var read: Bool = false
 
     enum CodingKeys: String, CodingKey {
         case title, website, authors, date, content, tags
