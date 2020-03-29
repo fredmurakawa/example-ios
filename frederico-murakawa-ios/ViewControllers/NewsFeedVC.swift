@@ -13,7 +13,19 @@ protocol NewsFeedVCDelegate: class {
 }
 
 class NewsFeedVC: UITableViewController {
-    let viewModel: NewsFeedViewModel
+    private let viewModel: NewsFeedViewModel
+
+    private lazy var activityIndicator: UIActivityIndicatorView = {
+        let activityIndicator = UIActivityIndicatorView(style: .large)
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        return activityIndicator
+    }()
+
+    private lazy var tableRefreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshControlTriggered), for: .valueChanged)
+        return refreshControl
+    }()
 
     weak var delegate: NewsFeedVCDelegate?
 
@@ -31,21 +43,37 @@ class NewsFeedVC: UITableViewController {
 
         title = "News"
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Sort", style: .plain, target: self, action: #selector(sortArticles))
-        
-        tableView.tableFooterView = UIView()
-        let nib = UINib(nibName: "NewsFeedCell", bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: NewsFeedCell.reuseIdentifier)
+
+        setupActivityIndicator()
+        setupTableView()
 
         viewModel.onArticlesLoaded = { [weak self] in
             DispatchQueue.main.async {
-              self?.tableView.reloadData()
+                self?.refreshControl?.endRefreshing()
+                self?.activityIndicator.stopAnimating()
+                self?.tableView.reloadData()
             }
         }
 
         viewModel.loadArticles()
     }
 
-    @objc func sortArticles() {
+    private func setupActivityIndicator() {
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        activityIndicator.startAnimating()
+        view.addSubview(activityIndicator)
+        activityIndicator.centerXAnchor.constraint(equalTo: tableView.centerXAnchor).isActive = true
+        activityIndicator.centerYAnchor.constraint(equalTo: tableView.centerYAnchor).isActive = true
+    }
+
+    private func setupTableView() {
+        tableView.refreshControl = tableRefreshControl
+        tableView.tableFooterView = UIView()
+        let nib = UINib(nibName: "NewsFeedCell", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: NewsFeedCell.reuseIdentifier)
+    }
+
+    @objc private func sortArticles() {
         let alertController = UIAlertController(title: "Sort by", message: nil, preferredStyle: .actionSheet)
         let titleAction = UIAlertAction(title: "Title", style: .default) { _ in
             self.viewModel.sortArticles(by: .title)
@@ -64,6 +92,10 @@ class NewsFeedVC: UITableViewController {
         alertController.addAction(cancelAction)
         
         present(alertController, animated: true, completion: nil)
+    }
+
+    @objc private func refreshControlTriggered() {
+        viewModel.loadArticles()
     }
 
     // MARK: - Table view data source
