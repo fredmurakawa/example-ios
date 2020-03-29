@@ -19,6 +19,7 @@
 		B63CF4A5242E8A3600FCEE69 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B63CF4A4242E8A3600FCEE69 /* Assets.xcassets */; };
 		B63CF4A8242E8A3600FCEE69 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B63CF4A6242E8A3600FCEE69 /* LaunchScreen.storyboard */; };
 		B63CF4B3242E8A3600FCEE69 /* frederico_murakawa_iosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63CF4B2242E8A3600FCEE69 /* frederico_murakawa_iosTests.swift */; };
+		B6ADE47524313A9A00A0836D /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6ADE47424313A9A00A0836D /* Cache.swift */; };
 		B6FF5920242EC42E00271314 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6FF591F242EC42E00271314 /* Article.swift */; };
 		B6FF5925242EC72300271314 /* APISession.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6FF5924242EC72300271314 /* APISession.swift */; };
 		B6FF5927242ECBA200271314 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6FF5926242ECBA200271314 /* Endpoint.swift */; };
@@ -54,6 +55,7 @@
 		B63CF4AE242E8A3600FCEE69 /* frederico-murakawa-iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "frederico-murakawa-iosTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B63CF4B2242E8A3600FCEE69 /* frederico_murakawa_iosTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = frederico_murakawa_iosTests.swift; sourceTree = "<group>"; };
 		B63CF4B4242E8A3600FCEE69 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B6ADE47424313A9A00A0836D /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		B6FF591F242EC42E00271314 /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		B6FF5924242EC72300271314 /* APISession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISession.swift; sourceTree = "<group>"; };
 		B6FF5926242ECBA200271314 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 				B63CF4A4242E8A3600FCEE69 /* Assets.xcassets */,
 				B63CF4A6242E8A3600FCEE69 /* LaunchScreen.storyboard */,
 				B63CF4A9242E8A3600FCEE69 /* Info.plist */,
+				B6ADE47424313A9A00A0836D /* Cache.swift */,
 			);
 			path = "frederico-murakawa-ios";
 			sourceTree = "<group>";
@@ -290,6 +293,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B616CB4024302F9200F0F931 /* UIColor+frederico-murakawa-ios.swift in Sources */,
+				B6ADE47524313A9A00A0836D /* Cache.swift in Sources */,
 				B6FF5925242EC72300271314 /* APISession.swift in Sources */,
 				B6FF5920242EC42E00271314 /* Article.swift in Sources */,
 				B616CB3E24302ED100F0F931 /* UIFont+frederico-murakawa-ios.swift in Sources */,
