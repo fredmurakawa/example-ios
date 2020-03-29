@@ -30,4 +30,9 @@ public class NewsFeedViewModel {
             }
         }
     }
+
+    func cellViewModelForArticle(at index: Int) -> NewsFeedCellViewModel {
+        let article = articles[index]
+        return NewsFeedCellViewModel(article: article)
+    }
 }
