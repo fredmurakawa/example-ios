@@ -116,9 +116,18 @@ class NewsFeedVC: UITableViewController {
 
     // MARK: - Table view delegate
 
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cellViewModel = viewModel.cellViewModelForArticle(at: indexPath.row)
-        cellViewModel.markArticleAsReadOrUnread()
-        tableView.reloadRows(at: [indexPath], with: .automatic)
+    override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let cellViewModel = self.viewModel.cellViewModelForArticle(at: indexPath.row)
+        let action = UIContextualAction(style: .normal, title: nil) { [weak self] (action, view, completionHandler) in
+            cellViewModel.markArticleAsReadOrUnread()
+            completionHandler(true)
+            self?.tableView.reloadRows(at: [indexPath], with: .automatic)
+        }
+        action.image = UIImage(systemName: cellViewModel.actionImage)
+        action.backgroundColor = .blue
+
+        let configuration = UISwipeActionsConfiguration(actions: [action])
+        configuration.performsFirstActionWithFullSwipe = true
+        return configuration
     }
 }
