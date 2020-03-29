@@ -8,7 +8,7 @@
 
 import UIKit
 
-internal class ImageLoader {
+final class ImageLoader {
     private var loadedImages = [URL: UIImage]() // In-memory cache
     private var runningRequests = [UUID: URLSessionDataTask]() // Keep a reference to data task to cancel it later if needed
     private var dispatchQueue = DispatchQueue(label: "com.fred.ImageLoader")

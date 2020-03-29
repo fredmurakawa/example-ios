@@ -16,7 +16,7 @@ protocol APISessionProviding {
     func fetch<T: Decodable>(_ requestProvider: RequestProviding, completion: @escaping (Result<T, Error>) -> Void)
 }
 
-public struct APISession: APISessionProviding {
+struct APISession: APISessionProviding {
     init() {}
 
     func fetch<T: Decodable>(_ requestProvider: RequestProviding, completion: @escaping (Result<T, Error>) -> Void) {

@@ -12,7 +12,7 @@ enum SortType {
     case title, date, author
 }
 
-public class NewsFeedViewModel {
+final class NewsFeedViewModel {
     private let articlesProvider: ArticlesProviding
     private var articles: [Article] = []
 

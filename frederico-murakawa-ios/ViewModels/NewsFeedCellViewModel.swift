@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class NewsFeedCellViewModel {
+struct NewsFeedCellViewModel {
     private let article: Article
 
     var onArticlesLoaded: () -> Void = {}

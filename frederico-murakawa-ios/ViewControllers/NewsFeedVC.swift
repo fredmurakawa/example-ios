@@ -12,7 +12,7 @@ protocol NewsFeedVCDelegate: class {
     func didSelectArticle(_ article: Article)
 }
 
-class NewsFeedVC: UITableViewController {
+final class NewsFeedVC: UITableViewController {
     private let viewModel: NewsFeedViewModel
 
     private lazy var activityIndicator: UIActivityIndicatorView = {

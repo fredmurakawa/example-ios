@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum Endpoint {
+enum Endpoint {
     case articles
 }
 

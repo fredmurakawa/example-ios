@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NewsFeedCell: UITableViewCell {
+final class NewsFeedCell: UITableViewCell {
     static let reuseIdentifier = "NewsFeedCell"
 
     @IBOutlet private weak var articleImageView: UIImageView!
