@@ -49,18 +49,31 @@ final class NewsFeedVC: UITableViewController {
 
         viewModel.onArticlesLoaded = { [weak self] in
             DispatchQueue.main.async {
-                self?.refreshControl?.endRefreshing()
-                self?.activityIndicator.stopAnimating()
+                self?.stopRefreshing()
                 self?.tableView.reloadData()
             }
         }
 
-        viewModel.loadArticles()
+        viewModel.onLoadFailed = { [weak self] in
+            let alertController = UIAlertController(title: "Oops", message: "Articles could not be loaded.", preferredStyle: .alert)
+            let retryAction = UIAlertAction(title: "Retry", style: .default) { _ in
+                self?.loadArticles()
+            }
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            alertController.addAction(retryAction)
+            alertController.addAction(cancelAction)
+
+            DispatchQueue.main.async {
+                self?.stopRefreshing()
+                self?.present(alertController, animated: true, completion: nil)
+            }
+        }
+
+        loadArticles()
     }
 
     private func setupActivityIndicator() {
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
-        activityIndicator.startAnimating()
         view.addSubview(activityIndicator)
         activityIndicator.centerXAnchor.constraint(equalTo: tableView.centerXAnchor).isActive = true
         activityIndicator.centerYAnchor.constraint(equalTo: tableView.centerYAnchor).isActive = true
@@ -71,6 +84,16 @@ final class NewsFeedVC: UITableViewController {
         tableView.tableFooterView = UIView()
         let nib = UINib(nibName: "NewsFeedCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: NewsFeedCell.reuseIdentifier)
+    }
+
+    private func loadArticles() {
+        activityIndicator.startAnimating()
+        viewModel.loadArticles()
+    }
+
+    private func stopRefreshing() {
+        refreshControl?.endRefreshing()
+        activityIndicator.stopAnimating()
     }
 
     @objc private func sortArticles() {

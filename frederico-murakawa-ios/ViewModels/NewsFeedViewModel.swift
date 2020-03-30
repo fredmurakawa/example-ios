@@ -17,6 +17,7 @@ final class NewsFeedViewModel {
     private var articles: [Article] = []
 
     var onArticlesLoaded: () -> Void = {}
+    var onLoadFailed: () -> Void = {}
 
     var numberOfRowsInSection: Int { articles.count }
 
@@ -31,7 +32,8 @@ final class NewsFeedViewModel {
                 self?.sortArticles(by: .date)
                 self?.onArticlesLoaded()
             } catch {
-                #warning("Implement")
+                print(error.localizedDescription)
+                self?.onLoadFailed()
             }
         }
     }
