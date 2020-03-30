@@ -46,7 +46,11 @@ final class ImageViewLoader {
 }
 
 extension UIImageView {
-    public func loadImage(at url: URL) {
+    public func loadImage(at url: URL?) {
+        guard let url = url else {
+            self.image = UIImage.placeholderImage()?.withTintColor(.black, renderingMode: .alwaysOriginal)
+            return
+        }
         ImageViewLoader.loader.load(url, for: self)
     }
 

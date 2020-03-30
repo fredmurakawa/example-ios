@@ -37,12 +37,7 @@ final class NewsFeedCell: UITableViewCell {
         configureTitleLabel(with: viewModel)
         authorsLabel?.text = viewModel.authors
         dateLabel?.text = viewModel.date
-        if let url = URL(string: viewModel.imageURL) {
-            articleImageView?.loadImage(at: url)
-        } else {
-            let image = UIImage(systemName: "photo.on.rectangle")?.withTintColor(.black, renderingMode: .alwaysOriginal)
-            articleImageView?.image = image // Placeholder image
-        }
+        articleImageView?.loadImage(at: URL(string: viewModel.imageURL))
     }
 
     func configureTitleLabel(with viewModel: NewsFeedCellViewModel) {
