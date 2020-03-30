@@ -11,11 +11,12 @@ import Foundation
 struct NewsFeedCellViewModel {
     private let article: Article
 
-    var onArticlesLoaded: () -> Void = {}
-
     var title: String { article.title }
+    var website: String { article.website }
     var authors: String { article.authors }
     var date: String { article.date }
+    var tags: [Tag] { article.tags }
+    var content: String { article.content }
     var imageURL: String { article.imageURL }
     var read: Bool { article.read }
     var contextualActionImage: String {
