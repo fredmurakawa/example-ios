@@ -18,8 +18,11 @@ struct NewsFeedCellViewModel {
     var date: String { article.date }
     var imageURL: String { article.imageURL }
     var read: Bool { article.read }
-    var actionImage: String {
+    var contextualActionImage: String {
         return read ? "envelope.fill" : "envelope.open.fill"
+    }
+    var contextualActionTitle: String {
+        return read ? "Unread" : "Read"
     }
 
     init(article: Article) {
