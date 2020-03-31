@@ -33,6 +33,8 @@ class ArticleDetailsVC: UIViewController {
         super.viewDidLoad()
 
         title = "Article"
+        navigationItem.leftItemsSupplementBackButton = true
+        navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
 
         imageView.layer.borderWidth = 2
         imageView.layer.borderColor = UIColor.darkGray.cgColor
