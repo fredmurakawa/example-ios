@@ -11,6 +11,8 @@ import Foundation
 class NewsFeedCellViewModel {
     let article: Article
 
+    var onMarkAsReadOrUnread: () -> Void = {}
+
     var title: String { article.title }
     var authors: String { article.authors }
     var date: String { article.date }
@@ -29,5 +31,6 @@ class NewsFeedCellViewModel {
 
     func markArticleAsReadOrUnread() {
         article.read = !article.read
+        onMarkAsReadOrUnread()
     }
 }

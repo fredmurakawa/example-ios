@@ -144,10 +144,12 @@ final class NewsFeedVC: UITableViewController {
             preconditionFailure("Incorrect cell for table view")
         }
         let cellViewModel = self.viewModel.cellViewModelForArticle(at: indexPath.row)
+        cellViewModel.onMarkAsReadOrUnread = { [weak cell] in
+            cell?.configureTitleLabel(with: cellViewModel)
+        }
         let action = UIContextualAction(style: .normal, title: cellViewModel.contextualActionTitle) { (action, view, completionHandler) in
             cellViewModel.markArticleAsReadOrUnread()
             completionHandler(true)
-            cell.configureTitleLabel(with: cellViewModel)
         }
         action.image = UIImage(systemName: cellViewModel.contextualActionImage)
         action.backgroundColor = .blue
