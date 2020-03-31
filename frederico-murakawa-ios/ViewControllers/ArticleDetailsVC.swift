@@ -16,7 +16,7 @@ class ArticleDetailsVC: UIViewController {
     @IBOutlet private weak var tagsLabel: UILabel!
     @IBOutlet private weak var markAsReadButton: UIButton!
     @IBOutlet private weak var dateLabel: UILabel!
-    @IBOutlet weak var contentLabel: UILabel!
+    @IBOutlet private weak var contentTextView: UITextView!
 
     let viewModel: ArticleDetailsViewModel
 
@@ -41,7 +41,7 @@ class ArticleDetailsVC: UIViewController {
         authorsLabel.text = viewModel.authors
         websiteLabel.text = viewModel.website
         dateLabel.text = viewModel.date
-        contentLabel.text = viewModel.content
+        contentTextView.text = viewModel.content
         tagsLabel.text = viewModel.tagsLabel()
         configureMarkAsReadButton()
         markAsReadButton.addTarget(self, action: #selector(markAsReadTapped), for: .touchUpInside)

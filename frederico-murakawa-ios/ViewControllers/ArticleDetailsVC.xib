@@ -11,7 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ArticleDetailsVC" customModule="frederico_murakawa_ios" customModuleProvider="target">
             <connections>
                 <outlet property="authorsLabel" destination="Rk3-fR-cng" id="bzs-QB-STt"/>
-                <outlet property="contentLabel" destination="kwb-pU-oer" id="Zao-2o-rXm"/>
+                <outlet property="contentTextView" destination="HWa-wm-2cf" id="by8-kE-SE2"/>
                 <outlet property="dateLabel" destination="frZ-Yd-REV" id="5pe-el-ww7"/>
                 <outlet property="imageView" destination="Y5V-Uw-UBQ" id="xof-Jk-Rzs"/>
                 <outlet property="markAsReadButton" destination="FVA-bA-Dp0" id="wzX-1v-6e7"/>
@@ -30,13 +30,13 @@
                     <rect key="frame" x="0.0" y="0.0" width="521" height="800"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Y5V-Uw-UBQ">
-                            <rect key="frame" x="0.0" y="0.0" width="521" height="280"/>
+                            <rect key="frame" x="-2" y="-2" width="525" height="280"/>
                         </imageView>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="df1-wf-j52">
-                            <rect key="frame" x="0.0" y="292" width="521" height="219.5"/>
+                            <rect key="frame" x="0.0" y="290" width="521" height="235.5"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="kUn-P9-BDy">
-                                    <rect key="frame" x="12" y="0.0" width="497" height="219.5"/>
+                                    <rect key="frame" x="12" y="0.0" width="497" height="235.5"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Ktp-HL-HJi" userLabel="Title Stack View">
                                             <rect key="frame" x="0.0" y="0.0" width="497" height="50"/>
@@ -111,12 +111,13 @@
                                                 </view>
                                             </subviews>
                                         </stackView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kwb-pU-oer">
-                                            <rect key="frame" x="0.0" y="200" width="497" height="19.5"/>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="HWa-wm-2cf">
+                                            <rect key="frame" x="0.0" y="200" width="497" height="35.5"/>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                            <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        </textView>
                                     </subviews>
                                 </stackView>
                             </subviews>
@@ -131,11 +132,11 @@
                         <constraint firstItem="df1-wf-j52" firstAttribute="leading" secondItem="FoX-jo-u9h" secondAttribute="leading" id="1ES-Si-HWq"/>
                         <constraint firstItem="df1-wf-j52" firstAttribute="width" secondItem="ofR-j4-WcQ" secondAttribute="width" id="3Up-LF-qEb"/>
                         <constraint firstItem="Y5V-Uw-UBQ" firstAttribute="height" secondItem="ofR-j4-WcQ" secondAttribute="height" multiplier="0.35" id="Cpp-5b-mSW"/>
-                        <constraint firstItem="Y5V-Uw-UBQ" firstAttribute="leading" secondItem="ofR-j4-WcQ" secondAttribute="leading" id="OkY-o6-pJB"/>
+                        <constraint firstItem="Y5V-Uw-UBQ" firstAttribute="leading" secondItem="ofR-j4-WcQ" secondAttribute="leading" constant="-2" id="OkY-o6-pJB"/>
                         <constraint firstItem="df1-wf-j52" firstAttribute="bottom" secondItem="FoX-jo-u9h" secondAttribute="bottom" id="bdf-vg-aT9"/>
-                        <constraint firstItem="Y5V-Uw-UBQ" firstAttribute="top" secondItem="InR-VM-Obh" secondAttribute="top" id="g4T-56-VvQ"/>
+                        <constraint firstItem="Y5V-Uw-UBQ" firstAttribute="top" secondItem="InR-VM-Obh" secondAttribute="top" constant="-2" id="g4T-56-VvQ"/>
                         <constraint firstItem="df1-wf-j52" firstAttribute="trailing" secondItem="FoX-jo-u9h" secondAttribute="trailing" id="i7Y-qp-B7u"/>
-                        <constraint firstItem="ofR-j4-WcQ" firstAttribute="trailing" secondItem="Y5V-Uw-UBQ" secondAttribute="trailing" id="w3t-Qc-OQL"/>
+                        <constraint firstItem="ofR-j4-WcQ" firstAttribute="trailing" secondItem="Y5V-Uw-UBQ" secondAttribute="trailing" constant="-2" id="w3t-Qc-OQL"/>
                     </constraints>
                     <viewLayoutGuide key="contentLayoutGuide" id="FoX-jo-u9h"/>
                     <viewLayoutGuide key="frameLayoutGuide" id="ofR-j4-WcQ"/>
