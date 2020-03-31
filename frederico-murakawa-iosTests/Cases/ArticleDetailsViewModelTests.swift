@@ -15,9 +15,7 @@ class ArticleDetailsViewModelTests: XCTestCase {
     var article: Article!
 
     override func setUp() {
-        let bundle = Bundle(for: type(of: self))
-        let url = bundle.url(forResource: "cheesecakelabs", withExtension: "json")!
-        let data = try! Data(contentsOf: url)
+        let data = loadStubFromBundle()
 
         let decoder = JSONDecoder()
         article = try! decoder.decode([Article].self, from: data).first!
