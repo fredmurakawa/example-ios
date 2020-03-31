@@ -158,4 +158,11 @@ final class NewsFeedVC: UITableViewController {
         configuration.performsFirstActionWithFullSwipe = true
         return configuration
     }
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let article = self.viewModel.getArticle(at: indexPath.row)
+        let articleDetailsViewModel = ArticleDetailsViewModel(article: article)
+        let detailsVC = UINavigationController(rootViewController: ArticleDetailsVC(viewModel: articleDetailsViewModel))
+        splitViewController?.showDetailViewController(detailsVC, sender: nil)
+    }
 }
