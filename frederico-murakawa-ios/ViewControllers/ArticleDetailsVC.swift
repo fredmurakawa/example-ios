@@ -16,7 +16,7 @@ class ArticleDetailsVC: UIViewController {
     @IBOutlet private weak var tagsLabel: UILabel!
     @IBOutlet private weak var markAsReadButton: UIButton!
     @IBOutlet private weak var dateLabel: UILabel!
-    @IBOutlet private weak var contentTextView: UITextView!
+    @IBOutlet weak var contentLabel: UILabel!
 
     let viewModel: ArticleDetailsViewModel
 
@@ -32,15 +32,31 @@ class ArticleDetailsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        title = "Article"
+
+        imageView.layer.borderWidth = 2
+        imageView.layer.borderColor = UIColor.darkGray.cgColor
         imageView?.loadImage(at: URL(string: viewModel.imageURL))
         titleLabel.text = viewModel.title
         authorsLabel.text = viewModel.authors
-        websiteLabel.text = viewModel.authors
+        websiteLabel.text = viewModel.website
         dateLabel.text = viewModel.date
-        contentTextView.text = viewModel.content
+        contentLabel.text = viewModel.content
         tagsLabel.text = viewModel.tagsLabel()
-        markAsReadButton.setTitle(viewModel.contextualActionTitle, for: .normal)
+        configureMarkAsReadButton()
+        markAsReadButton.addTarget(self, action: #selector(markAsReadTapped), for: .touchUpInside)
+
+        viewModel.onMarkAsReadOrUnread = { [weak self] in
+            self?.configureMarkAsReadButton()
+        }
+    }
+
+    private func configureMarkAsReadButton() {
+        markAsReadButton.setTitle(" \(viewModel.contextualActionTitle)", for: .normal)
         markAsReadButton.setImage(UIImage(systemName: viewModel.contextualActionImage), for: .normal)
     }
 
+    @objc private func markAsReadTapped() {
+        viewModel.markArticleAsReadOrUnread()
+    }
 }
