@@ -22,7 +22,7 @@ class NewsFeedCellViewModel {
         return read ? "envelope.fill" : "envelope.open.fill"
     }
     var contextualActionTitle: String {
-        return read ? "Unread" : "Read"
+        return read ? "Mark as Unread" : "Mark as Read"
     }
 
     init(article: Article) {

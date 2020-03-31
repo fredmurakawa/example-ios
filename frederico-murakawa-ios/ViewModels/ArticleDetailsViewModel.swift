@@ -9,7 +9,7 @@
 import Foundation
 
 class ArticleDetailsViewModel: NewsFeedCellViewModel {
-    var website: String { self.article.website }
+    var website: String { "Website: \(self.article.website)" }
     var content: String { article.content }
 
     func tagsLabel() -> String {
