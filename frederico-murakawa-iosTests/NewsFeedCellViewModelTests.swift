@@ -32,25 +32,12 @@ class NewsFeedCellViewModelTests: XCTestCase {
         XCTAssertEqual(sut.title, "Obama Offers Hopeful Vision While Noting Nation's Fears")
     }
 
-    func testWebsite() {
-        XCTAssertEqual(sut.website, "MacStories")
-    }
-
     func testAuthors() {
         XCTAssertEqual(sut.authors, "Graham Spencer")
     }
 
     func testDate() {
         XCTAssertEqual(sut.date, "05/26/2014")
-    }
-
-    func testContent() {
-        XCTAssertEqual(sut.content, "In his last State of the Union address, President Obama sought to paint a hopeful portrait. But he acknowledged that many Americans felt shut out of a political and economic system they view as rigged.")
-    }
-
-    func testTags() {
-        XCTAssertEqual(sut.tags.first!.id, 1)
-        XCTAssertEqual(sut.tags.first!.label, "Politics")
     }
 
     func testImageURL() {
@@ -70,8 +57,8 @@ class NewsFeedCellViewModelTests: XCTestCase {
     }
 
     func testContextualActionTitle() {
-        XCTAssertEqual(sut.contextualActionTitle, "Read")
+        XCTAssertEqual(sut.contextualActionTitle, "Mark as Read")
         sut.markArticleAsReadOrUnread()
-        XCTAssertEqual(sut.contextualActionTitle, "Unread")
+        XCTAssertEqual(sut.contextualActionTitle, "Mark as Unread")
     }
 }
