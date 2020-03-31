@@ -38,6 +38,10 @@ final class NewsFeedViewModel {
         }
     }
 
+    func getArticle(at index: Int) -> Article {
+        return articles[index]
+    }
+
     func cellViewModelForArticle(at index: Int) -> NewsFeedCellViewModel {
         let article = articles[index]
         return NewsFeedCellViewModel(article: article)
