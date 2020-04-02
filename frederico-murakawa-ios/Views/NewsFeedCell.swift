@@ -46,7 +46,7 @@ final class NewsFeedCell: UITableViewCell {
             titleLabel.textColor = UIColor.lightGray()
         } else {
             titleLabel.font = UIFont.titleFontNotRead()
-            titleLabel.textColor = .black
+            titleLabel.textColor = .label
         }
     }
 }
