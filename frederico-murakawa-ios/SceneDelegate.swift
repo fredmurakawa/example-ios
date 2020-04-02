@@ -21,6 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let masterNavigationController = UINavigationController(rootViewController: newsFeedVC)
 
         let splitVC = UISplitViewController()
+        splitVC.preferredDisplayMode = .allVisible
         splitVC.viewControllers = [masterNavigationController]
 
         window = UIWindow(windowScene: windowScene)
