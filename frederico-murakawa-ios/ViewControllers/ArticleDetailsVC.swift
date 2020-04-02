@@ -54,8 +54,13 @@ class ArticleDetailsVC: UIViewController {
     }
 
     private func configureMarkAsReadButton() {
-        markAsReadButton.setTitle(" \(viewModel.contextualActionTitle)", for: .normal)
         markAsReadButton.setImage(UIImage(systemName: viewModel.contextualActionImage), for: .normal)
+        markAsReadButton.setTitle("\(viewModel.contextualActionTitle) ", for: .normal)
+        
+        //Invert button title and image positions
+        markAsReadButton.transform = CGAffineTransform(scaleX: -1.0, y: 1.0)
+        markAsReadButton.titleLabel?.transform = CGAffineTransform(scaleX: -1.0, y: 1.0)
+        markAsReadButton.imageView?.transform = CGAffineTransform(scaleX: -1.0, y: 1.0)
     }
 
     @objc private func markAsReadTapped() {
