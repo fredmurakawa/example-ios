@@ -23,12 +23,6 @@ struct APISession: APISessionProviding {
         let urlRequest = requestProvider.urlRequest
 
         URLSession.shared.dataTask(with: urlRequest) { data, response, error in
-            guard let httpResponse = response as? HTTPURLResponse,
-                  (200...299).contains(httpResponse.statusCode) else {
-                    completion(.failure(NetworkError.serverError))
-                return
-            }
-
             do {
                 if let error = error {
                     completion(.failure(error))

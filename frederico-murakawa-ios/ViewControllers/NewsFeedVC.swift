@@ -98,6 +98,8 @@ final class NewsFeedVC: UITableViewController {
 
     @objc private func sortArticles() {
         let alertController = UIAlertController(title: "Sort by", message: nil, preferredStyle: .actionSheet)
+        alertController.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
+
         let titleAction = UIAlertAction(title: "Title", style: .default) { _ in
             self.viewModel.sortArticles(by: .title)
         }
