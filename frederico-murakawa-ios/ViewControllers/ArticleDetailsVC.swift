@@ -37,7 +37,7 @@ class ArticleDetailsVC: UIViewController {
         navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
 
         imageView.layer.borderWidth = 2
-        imageView.layer.borderColor = UIColor.darkGray.cgColor
+        imageView.layer.borderColor = UIColor.lightGray.cgColor
         imageView?.loadImage(at: URL(string: viewModel.imageURL))
         titleLabel.text = viewModel.title
         authorsLabel.text = viewModel.authors
