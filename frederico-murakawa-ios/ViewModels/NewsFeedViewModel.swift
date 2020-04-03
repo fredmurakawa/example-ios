@@ -15,7 +15,12 @@ enum SortType {
 final class NewsFeedViewModel {
     private let articlesProvider: ArticlesProviding
     private var articles: [Article] = []
-    let coreDataStack: CoreDataStack
+    private let coreDataStack: CoreDataStack
+    private var sortType = SortType.date {
+        didSet {
+            sortArticles()
+        }
+    }
 
     var onArticlesLoaded: () -> Void = {}
     var onLoadFailed: () -> Void = {}
@@ -27,14 +32,18 @@ final class NewsFeedViewModel {
         self.coreDataStack = coreDataStack
     }
 
-    func loadArticles() {
+    func updateSortType(to sortType: SortType) {
+        self.sortType = sortType
+    }
+
+    func loadArticles(sortBy: SortType = .date) {
         coreDataStack.fetchArticles { [weak self] (result) in
             guard let self = self else { return }
             switch result {
             case .success(let fetchedArticles):
                 if !fetchedArticles.isEmpty {
                     self.articles = fetchedArticles
-                    self.sortArticles(by: .date)
+                    self.sortArticles()
                     self.onArticlesLoaded()
                     return
                 } else {
@@ -42,7 +51,7 @@ final class NewsFeedViewModel {
                           guard let self = self else { return }
                           do {
                               self.articles = try result.get()
-                              self.sortArticles(by: .date)
+                              self.sortArticles()
                               self.onArticlesLoaded()
                           } catch {
                               print(error.localizedDescription)
@@ -66,7 +75,7 @@ final class NewsFeedViewModel {
         return NewsFeedCellViewModel(article: article, coreDataStack: coreDataStack)
     }
 
-    func sortArticles(by sortType: SortType) {
+    private func sortArticles() {
         switch sortType {
         case .title:
             articles = articles.sorted {

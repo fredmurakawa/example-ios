@@ -106,13 +106,13 @@ final class NewsFeedVC: UITableViewController {
         alertController.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
 
         let titleAction = UIAlertAction(title: "Title", style: .default) { _ in
-            self.viewModel.sortArticles(by: .title)
+            self.viewModel.updateSortType(to: .title)
         }
         let authorAction = UIAlertAction(title: "Author", style: .default) { _ in
-            self.viewModel.sortArticles(by: .author)
+            self.viewModel.updateSortType(to: .author)
         }
         let dateAction = UIAlertAction(title: "Date", style: .default) { _ in
-            self.viewModel.sortArticles(by: .date)
+            self.viewModel.updateSortType(to: .date)
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
 
