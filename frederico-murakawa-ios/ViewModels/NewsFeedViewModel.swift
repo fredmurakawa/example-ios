@@ -15,7 +15,7 @@ enum SortType {
 final class NewsFeedViewModel {
     private let articlesProvider: ArticlesProviding
     private var articles: [Article] = []
-    private let coreDataStack: CoreDataStack
+    let coreDataStack: CoreDataStack
 
     var onArticlesLoaded: () -> Void = {}
     var onLoadFailed: () -> Void = {}
@@ -63,7 +63,7 @@ final class NewsFeedViewModel {
 
     func cellViewModelForArticle(at index: Int) -> NewsFeedCellViewModel {
         let article = articles[index]
-        return NewsFeedCellViewModel(article: article)
+        return NewsFeedCellViewModel(article: article, coreDataStack: coreDataStack)
     }
 
     func sortArticles(by sortType: SortType) {

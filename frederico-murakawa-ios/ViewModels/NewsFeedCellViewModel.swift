@@ -10,6 +10,7 @@ import Foundation
 
 class NewsFeedCellViewModel {
     let article: Article
+    private let coreDataStack: CoreDataStack?
 
     var onMarkAsReadOrUnread: () -> Void = {}
 
@@ -25,12 +26,14 @@ class NewsFeedCellViewModel {
         return read ? "Mark as Unread" : "Mark as Read"
     }
 
-    init(article: Article) {
+    init(article: Article, coreDataStack: CoreDataStack? = nil) {
         self.article = article
+        self.coreDataStack = coreDataStack
     }
 
     func markArticleAsReadOrUnread() {
         article.read = !article.read
+        coreDataStack?.saveContext()
         onMarkAsReadOrUnread()
     }
 }
