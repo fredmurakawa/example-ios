@@ -9,24 +9,24 @@
 import Foundation
 
 // MARK: - Article
-class Article: Decodable {
-    let title: String
-    let website: String
-    let authors: String
-    let date: String
-    let content: String
-    let tags: [Tag]
-    let imageURL: String
-    var read: Bool = false
-
-    enum CodingKeys: String, CodingKey {
-        case title, website, authors, date, content, tags
-        case imageURL = "image_url"
-    }
-}
-
-// MARK: - Tag
-struct Tag: Decodable {
-    let id: Int
-    let label: String
-}
+//class Article1: Decodable {
+//    let title: String
+//    let website: String
+//    let authors: String
+//    let date: String
+//    let content: String
+//    let tags: [Tag]
+//    let imageURL: String
+//    var read: Bool = false
+//
+//    enum CodingKeys: String, CodingKey {
+//        case title, website, authors, date, content, tags
+//        case imageURL = "image_url"
+//    }
+//}
+//
+//// MARK: - Tag
+//struct Tag1: Decodable {
+//    let id: Int
+//    let label: String
+//}

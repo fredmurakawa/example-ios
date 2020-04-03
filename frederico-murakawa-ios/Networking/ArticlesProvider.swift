@@ -11,7 +11,7 @@ import Foundation
 protocol ArticlesProviding {
     var apiSession: APISessionProviding { get }
     
-    func getArticles(_ completion: @escaping (Result<[Article], Error>) -> Void)
+    func getArticles(coreDataStack: CoreDataStack, _ completion: @escaping (Result<[Article], Error>) -> Void)
 }
 
 struct ArticlesProvider: ArticlesProviding {
@@ -21,7 +21,7 @@ struct ArticlesProvider: ArticlesProviding {
         self.apiSession = apiSession
     }
     
-    func getArticles(_ completion: @escaping (Result<[Article], Error>) -> Void) {
-        apiSession.fetch(Endpoint.articles, completion: completion)
+    func getArticles(coreDataStack: CoreDataStack, _ completion: @escaping (Result<[Article], Error>) -> Void) {
+        apiSession.fetch(coreDataStack: coreDataStack, Endpoint.articles, completion: completion)
     }
 }

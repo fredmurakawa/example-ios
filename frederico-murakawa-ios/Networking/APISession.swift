@@ -13,13 +13,13 @@ protocol RequestProviding {
 }
 
 protocol APISessionProviding {
-    func fetch<T: Decodable>(_ requestProvider: RequestProviding, completion: @escaping (Result<T, Error>) -> Void)
+    func fetch<T: Decodable>(coreDataStack: CoreDataStack, _ requestProvider: RequestProviding, completion: @escaping (Result<T, Error>) -> Void)
 }
 
 struct APISession: APISessionProviding {
     init() {}
 
-    func fetch<T: Decodable>(_ requestProvider: RequestProviding, completion: @escaping (Result<T, Error>) -> Void) {
+    func fetch<T: Decodable>(coreDataStack: CoreDataStack, _ requestProvider: RequestProviding, completion: @escaping (Result<T, Error>) -> Void) {
         let urlRequest = requestProvider.urlRequest
 
         URLSession.shared.dataTask(with: urlRequest) { data, response, error in
@@ -33,7 +33,11 @@ struct APISession: APISessionProviding {
                     preconditionFailure("No error was received but we also don't have data.")
                 }
 
-                let decodedObject = try JSONDecoder().decode(T.self, from: data)
+                let decoder = JSONDecoder()
+                decoder.userInfo[CodingUserInfoKey.context!] = coreDataStack.managedContext
+                let decodedObject = try decoder.decode(T.self, from: data)
+
+                coreDataStack.saveContext()
 
                 completion(.success(decodedObject))
             } catch {

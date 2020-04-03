@@ -15,25 +15,44 @@ enum SortType {
 final class NewsFeedViewModel {
     private let articlesProvider: ArticlesProviding
     private var articles: [Article] = []
+    private let coreDataStack: CoreDataStack
 
     var onArticlesLoaded: () -> Void = {}
     var onLoadFailed: () -> Void = {}
 
     var numberOfRowsInSection: Int { articles.count }
 
-    init(articlesProvider: ArticlesProviding) {
+    init(articlesProvider: ArticlesProviding, coreDataStack: CoreDataStack) {
         self.articlesProvider = articlesProvider
+        self.coreDataStack = coreDataStack
     }
 
     func loadArticles() {
-        articlesProvider.getArticles { [weak self] result in
-            do {
-                self?.articles = try result.get()
-                self?.sortArticles(by: .date)
-                self?.onArticlesLoaded()
-            } catch {
+        coreDataStack.fetchArticles { [weak self] (result) in
+            guard let self = self else { return }
+            switch result {
+            case .success(let fetchedArticles):
+                if !fetchedArticles.isEmpty {
+                    self.articles = fetchedArticles
+                    self.sortArticles(by: .date)
+                    self.onArticlesLoaded()
+                    return
+                } else {
+                    self.articlesProvider.getArticles(coreDataStack: self.coreDataStack) { [weak self] result in
+                          guard let self = self else { return }
+                          do {
+                              self.articles = try result.get()
+                              self.sortArticles(by: .date)
+                              self.onArticlesLoaded()
+                          } catch {
+                              print(error.localizedDescription)
+                              self.onLoadFailed()
+                          }
+                      }
+                }
+            case.failure(let error):
                 print(error.localizedDescription)
-                self?.onLoadFailed()
+                self.onLoadFailed()
             }
         }
     }
@@ -50,16 +69,22 @@ final class NewsFeedViewModel {
     func sortArticles(by sortType: SortType) {
         switch sortType {
         case .title:
-            articles = articles.sorted { $0.title < $1.title }
+            articles = articles.sorted {
+                guard let title0 = $0.title, let title1 = $1.title else { return false }
+                return title0 < title1
+            }
         case .author:
-            articles = articles.sorted { $0.authors < $1.authors }
+            articles = articles.sorted {
+                guard let authors0 = $0.authors, let authors1 = $1.authors else { return false }
+                return authors0 < authors1
+            }
         case .date:
             articles = articles.sorted {
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "MM/dd/yyyy"
-                guard let date1 = dateFormatter.date(from: $0.date),
-                        let date2 = dateFormatter.date(from: $1.date) else { return false }
-                return date1 > date2
+                guard let d0 = $0.date, let date0 = dateFormatter.date(from: d0),
+                        let d1 = $1.date, let date1 = dateFormatter.date(from: d1) else { return false }
+                return date0 > date1
             }
         }
         onArticlesLoaded()

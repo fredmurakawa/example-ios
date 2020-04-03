@@ -16,7 +16,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
 
         let articlesProvider = ArticlesProvider(apiSession: APISession())
-        let viewModel = NewsFeedViewModel(articlesProvider: articlesProvider)
+        let coreDataStack = CoreDataStack(modelName: "Article")
+        let viewModel = NewsFeedViewModel(articlesProvider: articlesProvider, coreDataStack: coreDataStack)
         let newsFeedVC = NewsFeedVC(viewModel: viewModel)
         let masterNavigationController = UINavigationController(rootViewController: newsFeedVC)
 

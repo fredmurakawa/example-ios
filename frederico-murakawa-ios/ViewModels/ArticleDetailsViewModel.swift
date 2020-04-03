@@ -9,16 +9,18 @@
 import Foundation
 
 class ArticleDetailsViewModel: NewsFeedCellViewModel {
-    var website: String { "Website: \(self.article.website)" }
-    var content: String { article.content }
+    var website: String { "Website: \(self.article.website ?? "")" }
+    var content: String { article.content ?? "" }
 
     func tagsLabel() -> String {
+        guard let tags = article.tags else { return "" }
         var label = "Tags:"
-        for (index, tag) in article.tags.enumerated() {
+        for (index, tag) in tags.enumerated() {
+            guard let tag = tag as? Tag else { continue }
             if index > 0 {
                 label += ","
             }
-            label += " \(tag.label)"
+            label += " \(tag.label ?? "")"
         }
         return label
     }

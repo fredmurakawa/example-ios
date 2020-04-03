@@ -13,10 +13,10 @@ class NewsFeedCellViewModel {
 
     var onMarkAsReadOrUnread: () -> Void = {}
 
-    var title: String { article.title }
-    var authors: String { article.authors }
-    var date: String { article.date }
-    var imageURL: String { article.imageURL }
+    var title: String { article.title ?? "" }
+    var authors: String { article.authors ?? "" }
+    var date: String { article.date ?? "" }
+    var imageURL: String { article.imageURL ?? "" }
     var read: Bool { article.read }
     var contextualActionImage: String {
         return read ? "envelope.fill" : "envelope.open.fill"
