@@ -13,11 +13,14 @@ class ArticleDetailsViewModelTests: XCTestCase {
 
     var sut: ArticleDetailsViewModel!
     var article: Article!
+    var coreDataStack: CoreDataStack!
 
     override func setUp() {
+        coreDataStack = CoreDataStack(modelName: "Article")
         let data = loadStubFromBundle()
 
         let decoder = JSONDecoder()
+        decoder.userInfo[CodingUserInfoKey.context!] = coreDataStack.managedContext
         article = try! decoder.decode([Article].self, from: data).first!
         sut = ArticleDetailsViewModel(article: article)
     }
@@ -25,6 +28,7 @@ class ArticleDetailsViewModelTests: XCTestCase {
     override func tearDown() {
         sut = nil
         article = nil
+        coreDataStack = nil
     }
 
     func testWebsite() {

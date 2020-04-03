@@ -12,11 +12,14 @@ import XCTest
 class NewsFeedCellViewModelTests: XCTestCase {
     var sut: NewsFeedCellViewModel!
     var article: Article!
+    var coreDataStack: CoreDataStack!
 
     override func setUp() {
+        coreDataStack = CoreDataStack(modelName: "Article")
         let data = loadStubFromBundle()
 
         let decoder = JSONDecoder()
+        decoder.userInfo[CodingUserInfoKey.context!] = coreDataStack.managedContext
         article = try! decoder.decode([Article].self, from: data).first!
         sut = NewsFeedCellViewModel(article: article)
     }
@@ -24,6 +27,7 @@ class NewsFeedCellViewModelTests: XCTestCase {
     override func tearDown() {
         sut = nil
         article = nil
+        coreDataStack = nil
     }
 
     func testTitle() {

@@ -11,16 +11,19 @@ import XCTest
 
 class NewsFeedViewModelTests: XCTestCase {
     var sut: NewsFeedViewModel!
+    var coreDataStack: CoreDataStack!
 
     override func setUp() {
         let mockAPISession = MockAPISession()
         let articlesProvider = ArticlesProvider(apiSession: mockAPISession)
-        sut = NewsFeedViewModel(articlesProvider: articlesProvider)
+        coreDataStack = CoreDataStack(modelName: "Article")
+        sut = NewsFeedViewModel(articlesProvider: articlesProvider, coreDataStack: coreDataStack)
         sut.loadArticles()
     }
 
     override func tearDown() {
         sut = nil
+        coreDataStack = nil
     }
 
     func testNumberOfRowsInSection() {
