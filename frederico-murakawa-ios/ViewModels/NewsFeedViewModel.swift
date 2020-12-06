@@ -75,7 +75,7 @@ final class NewsFeedViewModel {
         return NewsFeedCellViewModel(article: article, coreDataStack: coreDataStack)
     }
 
-    private func sortArticles() {
+    func sortArticles() {
         switch sortType {
         case .title:
             articles = articles.sorted {

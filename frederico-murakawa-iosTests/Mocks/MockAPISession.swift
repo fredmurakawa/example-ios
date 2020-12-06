@@ -16,6 +16,7 @@ class MockAPISession: APISessionProviding {
         let data = try! Data(contentsOf: url)
 
         let decoder = JSONDecoder()
+        decoder.userInfo[CodingUserInfoKey.context!] = coreDataStack.managedContext
         let articles = try! decoder.decode(T.self, from: data)
         completion(.success(articles))
     }
