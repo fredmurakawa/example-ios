@@ -115,7 +115,6 @@
 		B616CB2B242FD3C200F0F931 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				B616CB2C242FD3E300F0F931 /* NewsFeedVC.swift */,
 				B600B2FD2433C5B000127FA0 /* ArticleDetailsVC.swift */,
 				B600B2FE2433C5B000127FA0 /* ArticleDetailsVC.xib */,
 			);
@@ -173,21 +172,18 @@
 		B63CF49A242E8A3600FCEE69 /* frederico-murakawa-ios */ = {
 			isa = PBXGroup;
 			children = (
-				B6D26D7D2437E7BF00FB934D /* CoreDataStack */,
-				B6ADE4762431524500A0836D /* Cache */,
-				B616CB3C24302E8400F0F931 /* Extensions */,
-				B6FF592A242EDCF100271314 /* ImageLoading */,
-				B6FF591E242EC37100271314 /* Models */,
-				B6FF5923242EC6F100271314 /* Networking */,
-				B616CB32242FE84400F0F931 /* Views */,
-				B616CB2B242FD3C200F0F931 /* ViewControllers */,
-				B616CB37243005D200F0F931 /* ViewModels */,
+				B63CF4A9242E8A3600FCEE69 /* Info.plist */,
 				B63CF49B242E8A3600FCEE69 /* AppDelegate.swift */,
 				B63CF49D242E8A3600FCEE69 /* SceneDelegate.swift */,
 				B63CF4A4242E8A3600FCEE69 /* Assets.xcassets */,
-				B63CF4A6242E8A3600FCEE69 /* LaunchScreen.storyboard */,
-				B63CF4A9242E8A3600FCEE69 /* Info.plist */,
 				B61E6F572437B81B000244CC /* Article.xcdatamodeld */,
+				B6ADE4762431524500A0836D /* Cache */,
+				B6D26D7D2437E7BF00FB934D /* CoreDataStack */,
+				B616CB3C24302E8400F0F931 /* Extensions */,
+				B63CF4A6242E8A3600FCEE69 /* LaunchScreen.storyboard */,
+				B6FF591E242EC37100271314 /* Models */,
+				B662D561257DC7DF0071B8D3 /* Screens */,
+				B662D565257DC92A0071B8D3 /* Services */,
 			);
 			path = "frederico-murakawa-ios";
 			sourceTree = "<group>";
@@ -202,6 +198,50 @@
 				B63CF4B4242E8A3600FCEE69 /* Info.plist */,
 			);
 			path = "frederico-murakawa-iosTests";
+			sourceTree = "<group>";
+		};
+		B662D561257DC7DF0071B8D3 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				B662D564257DC8390071B8D3 /* ArticleDetails */,
+				B662D562257DC7E80071B8D3 /* NewsFeed */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		B662D562257DC7E80071B8D3 /* NewsFeed */ = {
+			isa = PBXGroup;
+			children = (
+				B616CB37243005D200F0F931 /* ViewModels */,
+				B616CB32242FE84400F0F931 /* Views */,
+				B662D563257DC7FD0071B8D3 /* ViewControllers */,
+			);
+			path = NewsFeed;
+			sourceTree = "<group>";
+		};
+		B662D563257DC7FD0071B8D3 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				B616CB2C242FD3E300F0F931 /* NewsFeedVC.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		B662D564257DC8390071B8D3 /* ArticleDetails */ = {
+			isa = PBXGroup;
+			children = (
+				B616CB2B242FD3C200F0F931 /* ViewControllers */,
+			);
+			path = ArticleDetails;
+			sourceTree = "<group>";
+		};
+		B662D565257DC92A0071B8D3 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				B6FF592A242EDCF100271314 /* ImageLoading */,
+				B6FF5923242EC6F100271314 /* Networking */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		B694107A2434029A0037516D /* Mocks */ = {

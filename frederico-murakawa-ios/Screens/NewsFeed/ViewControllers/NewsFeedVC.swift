@@ -70,7 +70,7 @@ final class NewsFeedVC: UITableViewController {
     private func setupTableView() {
         tableView.refreshControl = tableRefreshControl
         tableView.tableFooterView = UIView()
-        let nib = UINib(nibName: "NewsFeedCell", bundle: nil)
+        let nib = UINib(nibName: NewsFeedCell.reuseIdentifier, bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: NewsFeedCell.reuseIdentifier)
     }
     
