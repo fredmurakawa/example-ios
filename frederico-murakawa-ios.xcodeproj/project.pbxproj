@@ -135,7 +135,6 @@
 			children = (
 				B616CB38243005DF00F0F931 /* NewsFeedViewModel.swift */,
 				B616CB3A24301CD800F0F931 /* NewsFeedCellViewModel.swift */,
-				B600B2FB2432AAC000127FA0 /* ArticleDetailsViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -231,6 +230,7 @@
 			isa = PBXGroup;
 			children = (
 				B616CB2B242FD3C200F0F931 /* ViewControllers */,
+				B689E013257DD04F00068D6C /* ViewModels */,
 			);
 			path = ArticleDetails;
 			sourceTree = "<group>";
@@ -242,6 +242,14 @@
 				B6FF5923242EC6F100271314 /* Networking */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		B689E013257DD04F00068D6C /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				B600B2FB2432AAC000127FA0 /* ArticleDetailsViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		B694107A2434029A0037516D /* Mocks */ = {

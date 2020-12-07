@@ -8,9 +8,23 @@
 
 import Foundation
 
-class NewsFeedCellViewModel {
-    let article: Article
+protocol NewsFeedCellViewModelProtocol: AnyObject {
+    var article: Article { get }
+    var title: String { get }
+    var authors: String { get }
+    var date: String { get }
+    var imageURL: String { get }
+    var read: Bool { get }
+    var contextualActionImage: String { get }
+    var contextualActionTitle: String { get }
+    var onMarkAsReadOrUnread: () -> Void { get set }
+    
+    func markArticleAsReadOrUnread()
+}
+
+class NewsFeedCellViewModel: NewsFeedCellViewModelProtocol {
     private let coreDataStack: CoreDataStack?
+    let article: Article
 
     var onMarkAsReadOrUnread: () -> Void = {}
 

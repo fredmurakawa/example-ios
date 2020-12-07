@@ -61,7 +61,6 @@ final class NewsFeedVC: UITableViewController {
     }
 
     private func setupActivityIndicator() {
-        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(activityIndicator)
         activityIndicator.centerXAnchor.constraint(equalTo: tableView.centerXAnchor).isActive = true
         activityIndicator.centerYAnchor.constraint(equalTo: tableView.centerYAnchor).isActive = true

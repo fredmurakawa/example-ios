@@ -32,7 +32,7 @@ final class NewsFeedCell: UITableViewCell {
         dateLabel.text = nil
     }
 
-    func configure(with viewModel: NewsFeedCellViewModel) {
+    func configure(with viewModel: NewsFeedCellViewModelProtocol) {
         titleLabel?.text = viewModel.title
         configureTitleLabel(with: viewModel)
         authorsLabel?.text = viewModel.authors
@@ -40,7 +40,7 @@ final class NewsFeedCell: UITableViewCell {
         articleImageView?.loadImage(at: URL(string: viewModel.imageURL))
     }
 
-    func configureTitleLabel(with viewModel: NewsFeedCellViewModel) {
+    func configureTitleLabel(with viewModel: NewsFeedCellViewModelProtocol) {
         if viewModel.read {
             titleLabel.font = UIFont.titleFontRead()
             titleLabel.textColor = UIColor.lightGray()

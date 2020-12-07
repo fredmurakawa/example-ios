@@ -20,7 +20,7 @@ protocol NewsFeedViewModelProtocol: AnyObject {
     func updateSortType(to sortType: SortType)
     func loadArticles(sortBy: SortType)
     func getArticle(at index: Int) -> Article
-    func cellViewModelForArticle(at index: Int) -> NewsFeedCellViewModel
+    func cellViewModelForArticle(at index: Int) -> NewsFeedCellViewModelProtocol
 }
 
 final class NewsFeedViewModel: NewsFeedViewModelProtocol {
@@ -81,7 +81,7 @@ final class NewsFeedViewModel: NewsFeedViewModelProtocol {
         return articles[index]
     }
 
-    func cellViewModelForArticle(at index: Int) -> NewsFeedCellViewModel {
+    func cellViewModelForArticle(at index: Int) -> NewsFeedCellViewModelProtocol {
         let article = articles[index]
         return NewsFeedCellViewModel(article: article, coreDataStack: coreDataStack)
     }
