@@ -18,9 +18,9 @@ class ArticleDetailsVC: UIViewController {
     @IBOutlet private weak var dateLabel: UILabel!
     @IBOutlet private weak var contentTextView: UITextView!
 
-    let viewModel: ArticleDetailsViewModel
+    let viewModel: ArticleDetailsViewModelProtocol
 
-    init(viewModel: ArticleDetailsViewModel) {
+    init(viewModel: ArticleDetailsViewModelProtocol) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -32,10 +32,22 @@ class ArticleDetailsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setupNavBar()
+        setupViews()
+        configureMarkAsReadButton()
+
+        viewModel.onMarkAsReadOrUnread = { [weak self] in
+            self?.configureMarkAsReadButton()
+        }
+    }
+    
+    private func setupNavBar() {
         title = "Article"
         navigationItem.leftItemsSupplementBackButton = true
         navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
-
+    }
+    
+    private func setupViews() {
         imageView.layer.borderWidth = 2
         imageView.layer.borderColor = UIColor.lightGray.cgColor
         imageView?.loadImage(at: URL(string: viewModel.imageURL))
@@ -45,12 +57,7 @@ class ArticleDetailsVC: UIViewController {
         dateLabel.text = viewModel.date
         contentTextView.text = viewModel.content
         tagsLabel.text = viewModel.tagsLabel()
-        configureMarkAsReadButton()
         markAsReadButton.addTarget(self, action: #selector(markAsReadTapped), for: .touchUpInside)
-
-        viewModel.onMarkAsReadOrUnread = { [weak self] in
-            self?.configureMarkAsReadButton()
-        }
     }
 
     private func configureMarkAsReadButton() {

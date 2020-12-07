@@ -8,7 +8,14 @@
 
 import Foundation
 
-class ArticleDetailsViewModel: NewsFeedCellViewModel {
+protocol ArticleDetailsViewModelProtocol: NewsFeedCellViewModelProtocol {
+    var website: String { get }
+    var content: String { get }
+    
+    func tagsLabel() -> String
+}
+
+class ArticleDetailsViewModel: NewsFeedCellViewModel, ArticleDetailsViewModelProtocol {
     var website: String { "Website: \(self.article.website ?? "")" }
     var content: String { article.content ?? "" }
 
