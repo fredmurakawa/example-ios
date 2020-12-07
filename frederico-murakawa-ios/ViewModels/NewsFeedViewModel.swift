@@ -12,7 +12,18 @@ enum SortType {
     case title, date, author
 }
 
-final class NewsFeedViewModel {
+protocol NewsFeedViewModelProtocol: AnyObject {
+    var onArticlesLoaded: () -> Void { get set }
+    var onLoadFailed: () -> Void { get set }
+    var numberOfRowsInSection: Int { get }
+    
+    func updateSortType(to sortType: SortType)
+    func loadArticles(sortBy: SortType)
+    func getArticle(at index: Int) -> Article
+    func cellViewModelForArticle(at index: Int) -> NewsFeedCellViewModel
+}
+
+final class NewsFeedViewModel: NewsFeedViewModelProtocol {
     private let articlesProvider: ArticlesProviding
     private var articles: [Article] = []
     private let coreDataStack: CoreDataStack
@@ -48,16 +59,16 @@ final class NewsFeedViewModel {
                     return
                 } else {
                     self.articlesProvider.getArticles(coreDataStack: self.coreDataStack) { [weak self] result in
-                          guard let self = self else { return }
-                          do {
-                              self.articles = try result.get()
-                              self.sortArticles()
-                              self.onArticlesLoaded()
-                          } catch {
-                              print(error.localizedDescription)
-                              self.onLoadFailed()
-                          }
-                      }
+                        guard let self = self else { return }
+                        do {
+                            self.articles = try result.get()
+                            self.sortArticles()
+                            self.onArticlesLoaded()
+                        } catch {
+                            print(error.localizedDescription)
+                            self.onLoadFailed()
+                        }
+                    }
                 }
             case.failure(let error):
                 print(error.localizedDescription)

@@ -39,7 +39,7 @@ class NewsFeedViewModelTests: XCTestCase {
     }
 
     func testSortArticles_byDate() {
-        sut.sortArticles()
+        sut.updateSortType(to: .date)
         let firstArticle = sut.getArticle(at: 0)
         XCTAssertEqual(firstArticle.title, "NASA Formalizes Efforts To Protect Earth From Asteroids")
         let lastArticle = sut.getArticle(at: sut.numberOfRowsInSection - 1)
@@ -47,7 +47,6 @@ class NewsFeedViewModelTests: XCTestCase {
     }
 
     func testSortArticles_byTitle() {
-        sut.sortArticles()
         sut.updateSortType(to: .title)
         let firstArticle = sut.getArticle(at: 0)
         XCTAssertEqual(firstArticle.title, "As U.S. Modernizes Nuclear Weapons, 'Smaller' Leaves Some Uneasy")
@@ -56,7 +55,6 @@ class NewsFeedViewModelTests: XCTestCase {
     }
 
     func testSortArticles_byAuthor() {
-        sut.sortArticles()
         sut.updateSortType(to: .author)
         let firstArticle = sut.getArticle(at: 0)
         XCTAssertEqual(firstArticle.title, "NASA Formalizes Efforts To Protect Earth From Asteroids")

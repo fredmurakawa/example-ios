@@ -8,12 +8,8 @@
 
 import UIKit
 
-protocol NewsFeedVCDelegate: class {
-    func didSelectArticle(_ article: Article)
-}
-
 final class NewsFeedVC: UITableViewController {
-    private let viewModel: NewsFeedViewModel
+    private let viewModel: NewsFeedViewModelProtocol
 
     private lazy var activityIndicator: UIActivityIndicatorView = {
         let activityIndicator = UIActivityIndicatorView(style: .large)
@@ -27,9 +23,7 @@ final class NewsFeedVC: UITableViewController {
         return refreshControl
     }()
 
-    weak var delegate: NewsFeedVCDelegate?
-
-    init(viewModel: NewsFeedViewModel) {
+    init(viewModel: NewsFeedViewModelProtocol) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -41,32 +35,16 @@ final class NewsFeedVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "News"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Sort", style: .plain, target: self, action: #selector(sortArticles))
-
+        setupNavBar()
         setupActivityIndicator()
         setupTableView()
 
         viewModel.onArticlesLoaded = { [weak self] in
-            DispatchQueue.main.async {
-                self?.stopRefreshing()
-                self?.tableView.reloadData()
-            }
+            self?.reloadData()
         }
 
         viewModel.onLoadFailed = { [weak self] in
-            let alertController = UIAlertController(title: "Oops", message: "Articles could not be loaded.", preferredStyle: .alert)
-            let retryAction = UIAlertAction(title: "Retry", style: .default) { _ in
-                self?.loadArticles()
-            }
-            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-            alertController.addAction(retryAction)
-            alertController.addAction(cancelAction)
-
-            DispatchQueue.main.async {
-                self?.stopRefreshing()
-                self?.present(alertController, animated: true, completion: nil)
-            }
+            self?.presentLoadFailedAlert()
         }
 
         loadArticles()
@@ -75,6 +53,11 @@ final class NewsFeedVC: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
+    }
+    
+    private func setupNavBar() {
+        title = "News"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Sort", style: .plain, target: self, action: #selector(sortArticles))
     }
 
     private func setupActivityIndicator() {
@@ -90,10 +73,42 @@ final class NewsFeedVC: UITableViewController {
         let nib = UINib(nibName: "NewsFeedCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: NewsFeedCell.reuseIdentifier)
     }
+    
+    private func reloadData() {
+        DispatchQueue.main.async {
+            self.stopRefreshing()
+            self.tableView.reloadData()
+        }
+    }
+    
+    private func presentLoadFailedAlert() {
+        let retryAction = UIAlertAction(title: "Retry", style: .default) { _ in
+            self.loadArticles()
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+
+        DispatchQueue.main.async {
+            self.stopRefreshing()
+            self.presentAlert(title: "Oops",
+                              message: "Articles could not be loaded.",
+                              preferredStyle: .alert,
+                              actions: [retryAction, cancelAction])
+        }
+    }
+    
+    private func presentAlert(title: String, message: String, preferredStyle: UIAlertController.Style, actions: [UIAlertAction]) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: preferredStyle)
+        
+        actions.forEach { (action) in
+            alertController.addAction(action)
+        }
+        
+        present(alertController, animated: true, completion: nil)
+    }
 
     private func loadArticles() {
         activityIndicator.startAnimating()
-        viewModel.loadArticles()
+        viewModel.loadArticles(sortBy: .date)
     }
 
     private func stopRefreshing() {
@@ -125,7 +140,7 @@ final class NewsFeedVC: UITableViewController {
     }
 
     @objc private func refreshControlTriggered() {
-        viewModel.loadArticles()
+        viewModel.loadArticles(sortBy: .date)
     }
 
     // MARK: - Table view data source
