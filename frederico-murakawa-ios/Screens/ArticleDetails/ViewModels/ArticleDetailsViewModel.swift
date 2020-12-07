@@ -15,7 +15,7 @@ protocol ArticleDetailsViewModelProtocol: NewsFeedCellViewModelProtocol {
     func tagsLabel() -> String
 }
 
-class ArticleDetailsViewModel: NewsFeedCellViewModel, ArticleDetailsViewModelProtocol {
+final class ArticleDetailsViewModel: NewsFeedCellViewModel, ArticleDetailsViewModelProtocol {
     var website: String { "Website: \(self.article.website ?? "")" }
     var content: String { article.content ?? "" }
 
