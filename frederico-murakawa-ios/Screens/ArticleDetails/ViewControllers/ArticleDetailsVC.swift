@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ArticleDetailsVC: UIViewController {
+final class ArticleDetailsVC: UIViewController {
     @IBOutlet private weak var imageView: UIImageView!
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var authorsLabel: UILabel!
